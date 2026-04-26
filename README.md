@@ -484,3 +484,20 @@ if __name__ == "__main__":
     app.mainloop()
 ```
 Pada bagian ini, terdapat blok ``if __name__ == "__main__"``: yang berfungsi sebagai titik awal program. Di sini kami membuat objek dari ``AplikasiFSM`` dan menjalankan ``mainloop()`` agar aplikasi GUI bisa berjalan dan merespons interaksi pengguna. Bagian ini wajib ada dalam program GUI agar aplikasi bisa ditampilkan dengan benar.
+
+## 8. Hail Output
+<img width="1919" height="1018" alt="Screenshot 2026-04-26 194911" src="https://github.com/user-attachments/assets/9d692f39-a513-439b-911a-7c169d24fda4" />
+<br><br>
+<img width="1919" height="1022" alt="image" src="https://github.com/user-attachments/assets/4ce17d52-4e55-467b-ab05-642b95becca2" />
+
+## 9. Analisis Output
+Berdasarkan percobaan yang kami lakukan, kami menguji dua buah string yaitu “101101” dan “1011001” menggunakan aplikasi FSM yang telah dibuat. Untuk string pertama yaitu “101101”, hasil yang diperoleh adalah DITERIMA. Hal ini karena selama proses pembacaan, mesin tidak pernah masuk ke state trap (C), yang berarti tidak ditemukan substring 00. Selain itu, state akhir berada di B, yang merupakan state final, sehingga string memenuhi semua syarat, terutama karena berakhir dengan 1. Sedangkan untuk string kedua yaitu “1011001”, hasil yang diperoleh adalah DITOLAK. Pada awal proses, perpindahan state masih berjalan normal dan belum ditemukan pelanggaran. Namun ketika membaca bagian tengah string, tepatnya saat terdapat dua karakter 0 yang berurutan, mesin berpindah dari state A ke state C. State C ini merupakan trap state yang menandakan bahwa substring 00 telah ditemukan. Setelah masuk ke state ini, mesin akan tetap berada di state C meskipun membaca simbol berikutnya. Akibatnya, state akhir bukan lagi state final (B), melainkan state trap (C), sehingga string dinyatakan ditolak. Dari kedua percobaan tersebut, terlihat bahwa FSM bekerja sesuai dengan aturan yang telah ditentukan, yaitu menerima string yang berakhir dengan 1 dan tidak mengandung substring 00, serta menolak string yang melanggar salah satu dari syarat tersebut.
+
+## 9. Kesimpulan
+Berikut versi **kesimpulan menyeluruh (gabungan dari kode + hasil pengujian)** dengan gaya seperti kamu menjelaskan:
+
+---
+
+# **Kesimpulan**
+
+Berdasarkan keseluruhan pembuatan program dan hasil pengujian yang telah dilakukan, kami dapat menyimpulkan bahwa aplikasi FSM yang kami buat sudah berjalan dengan baik dan sesuai dengan konsep Finite State Machine dalam teori automata. Program ini berhasil mengimplementasikan aturan bahasa yaitu string harus berakhir dengan `1` dan tidak boleh mengandung substring `00`. Dari sisi kode, struktur program sudah cukup jelas karena memisahkan antara bagian logika FSM dan bagian tampilan (GUI). Class `MesinFSM` berfungsi untuk menangani proses inti seperti validasi input dan perpindahan state, sedangkan class `AplikasiFSM` bertugas mengatur tampilan serta interaksi pengguna. Dengan pemisahan ini, program menjadi lebih terstruktur dan mudah dipahami. Dari sisi hasil pengujian, program mampu memberikan output yang akurat. String seperti **“101101”** diterima karena memenuhi semua syarat, sedangkan string seperti **“1011001”** ditolak karena mengandung substring `00` yang menyebabkan mesin masuk ke trap state. Hasil ini juga konsisten dengan pengecekan langsung, sehingga menunjukkan bahwa implementasi FSM sudah benar. Selain itu, fitur tambahan seperti tampilan jejak perpindahan state dan ringkasan hasil sangat membantu dalam memahami bagaimana proses FSM bekerja secara detail. Hal ini membuat program tidak hanya sekadar memberikan hasil, tetapi juga memberikan penjelasan yang mendukung proses pembelajaran.
