@@ -477,7 +477,7 @@ Class AplikasiFSM merupakan bagian yang mengatur tampilan aplikasi. Class ini me
   ```
   Pada fungsi ini, kami menyimpan hasil proses FSM ke dalam file teks. Jika belum ada hasil, kami menampilkan peringatan. Jika ada, kami membuka dialog untuk menentukan lokasi penyimpanan, lalu menuliskan hasil ke file tersebut. Jika berhasil, kami menampilkan pesan sukses, dan jika gagal, kami menampilkan pesan error. Fungsi ini berguna untuk dokumentasi hasil.
 
-## Program Utama
+## 7. Program Utama
 ```
 if __name__ == "__main__":
     app = AplikasiFSM()
